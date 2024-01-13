@@ -2,9 +2,9 @@
 pragma solidity ^0.8.13;
 
 import {console2} from "forge-std/Test.sol";
-import { Strings } from "@openzeppelin/contracts/utils/Strings.sol";
-import { Arrays } from "@openzeppelin/contracts/utils/Arrays.sol";
-import { BytesLib } from "solidity-bytes-utils/BytesLib.sol";
+import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
+import {Arrays} from "@openzeppelin/contracts/utils/Arrays.sol";
+import {BytesLib} from "solidity-bytes-utils/BytesLib.sol";
 
 contract Day01_01 {
     bytes constant DIGITS = "\x30\x31\x32\x33\x34\x35\x36\x37\x38\x39";
@@ -15,8 +15,8 @@ contract Day01_01 {
         bool first_digit_set;
         uint8 last_digit;
 
-        for (uint index; index < line_bytes.length; index++) {
-            for (uint index_digits; index_digits < DIGITS.length; index_digits++) {
+        for (uint256 index; index < line_bytes.length; index++) {
+            for (uint256 index_digits; index_digits < DIGITS.length; index_digits++) {
                 if (DIGITS[index_digits] == line_bytes[index]) {
                     if (!first_digit_set) {
                         first_digit = uint8(bytes1(line_bytes[index])) - 48;
@@ -28,7 +28,7 @@ contract Day01_01 {
                 }
             }
         }
-        
+
         return first_digit * 10 + last_digit;
     }
 }

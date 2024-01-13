@@ -23,7 +23,7 @@ contract Day01Test is Test {
             uint256 line_calibration_value = day01_01.parseLine(line);
             total_calibration_value += line_calibration_value;
         }
-    
+
         console2.log("Day 1_1: ", total_calibration_value);
         assertEq(total_calibration_value, 56049);
     }
