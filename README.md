@@ -6,10 +6,15 @@ Rust version of solutions: https://github.com/Kuzirashi/advent
 
 ## Usage
 
+### Install
+```
+forge install
+```
+
 ### Test
 
 ```shell
-$ forge test -vvv
+forge test -vvv
 ```
 
 Example output:
