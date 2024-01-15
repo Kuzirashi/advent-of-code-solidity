@@ -7,3 +7,6 @@
 [submodule "lib/solidity-bytes-utils"]
 	path = lib/solidity-bytes-utils
 	url = https://github.com/GNSPS/solidity-bytes-utils
+[submodule "lib/solady"]
+	path = lib/solady
+	url = https://github.com/vectorized/solady
