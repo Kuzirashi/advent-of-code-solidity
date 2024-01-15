@@ -9,26 +9,26 @@ import {BytesLib} from "solidity-bytes-utils/BytesLib.sol";
 contract Day01_01 {
     bytes constant DIGITS = "\x30\x31\x32\x33\x34\x35\x36\x37\x38\x39";
 
-    function parseLine(string memory line) public pure returns (uint256) {
-        bytes memory line_bytes = bytes(line);
-        uint8 first_digit;
-        bool first_digit_set;
-        uint8 last_digit;
+    function parseLine(string memory line) public view virtual returns (uint256) {
+        bytes memory lineBytes = bytes(line);
+        uint8 firstDigit;
+        bool firstDigitSet;
+        uint8 lastDigit;
 
-        for (uint256 index; index < line_bytes.length; index++) {
+        for (uint256 index; index < lineBytes.length; index++) {
             for (uint256 index_digits; index_digits < DIGITS.length; index_digits++) {
-                if (DIGITS[index_digits] == line_bytes[index]) {
-                    if (!first_digit_set) {
-                        first_digit = uint8(bytes1(line_bytes[index])) - 48;
-                        first_digit_set = true;
+                if (DIGITS[index_digits] == lineBytes[index]) {
+                    if (!firstDigitSet) {
+                        firstDigit = uint8(bytes1(lineBytes[index])) - 48;
+                        firstDigitSet = true;
                     }
 
-                    last_digit = uint8(bytes1(line_bytes[index])) - 48;
+                    lastDigit = uint8(bytes1(lineBytes[index])) - 48;
                     break;
                 }
             }
         }
 
-        return first_digit * 10 + last_digit;
+        return firstDigit * 10 + lastDigit;
     }
 }
