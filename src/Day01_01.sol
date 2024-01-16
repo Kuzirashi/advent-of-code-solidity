@@ -8,6 +8,7 @@ import {BytesLib} from "solidity-bytes-utils/BytesLib.sol";
 
 contract Day01_01 {
     bytes constant DIGITS = "\x30\x31\x32\x33\x34\x35\x36\x37\x38\x39";
+    uint8 constant DIGITS_LENGTH = 10;
 
     function parseLine(string memory line) public view virtual returns (uint256) {
         bytes memory lineBytes = bytes(line);
@@ -16,14 +17,15 @@ contract Day01_01 {
         uint8 lastDigit;
 
         for (uint256 index; index < lineBytes.length; index++) {
-            for (uint256 index_digits; index_digits < DIGITS.length; index_digits++) {
+            for (uint256 index_digits; index_digits < DIGITS_LENGTH; index_digits++) {
                 if (DIGITS[index_digits] == lineBytes[index]) {
+                    uint8 digit = uint8(bytes1(lineBytes[index])) - 48;
                     if (!firstDigitSet) {
-                        firstDigit = uint8(bytes1(lineBytes[index])) - 48;
+                        firstDigit = digit;
                         firstDigitSet = true;
                     }
 
-                    lastDigit = uint8(bytes1(lineBytes[index])) - 48;
+                    lastDigit = digit;
                     break;
                 }
             }
