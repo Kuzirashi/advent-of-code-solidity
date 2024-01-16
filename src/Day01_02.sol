@@ -1,10 +1,6 @@
-// SPDX-License-Identifier: UNLICENSED
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
-import {console2} from "forge-std/Test.sol";
-import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
-import {Arrays} from "@openzeppelin/contracts/utils/Arrays.sol";
-import {BytesLib} from "solidity-bytes-utils/BytesLib.sol";
 import {LibString} from "solady/src/utils/LibString.sol";
 
 import {Day01_01} from "./Day01_01.sol";

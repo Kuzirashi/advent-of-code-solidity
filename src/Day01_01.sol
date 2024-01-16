@@ -1,10 +1,5 @@
-// SPDX-License-Identifier: UNLICENSED
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
-
-import {console2} from "forge-std/Test.sol";
-import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
-import {Arrays} from "@openzeppelin/contracts/utils/Arrays.sol";
-import {BytesLib} from "solidity-bytes-utils/BytesLib.sol";
 
 contract Day01_01 {
     bytes constant DIGITS = "\x30\x31\x32\x33\x34\x35\x36\x37\x38\x39";
