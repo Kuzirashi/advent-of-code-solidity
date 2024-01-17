@@ -14,6 +14,23 @@ contract Day01Test is Test {
         day01_02 = new Day01_02();
     }
 
+    function test_day01_01_demo() public {
+        uint256 total_calibration_value = 0;
+
+        while (true) {
+            string memory line = vm.readLine("./inputs/01_demo.txt");
+            if (bytes(line).length == 0) {
+                break;
+            }
+
+            uint256 line_calibration_value = day01_01.parseLine(line);
+            total_calibration_value += line_calibration_value;
+        }
+
+        console2.log("Day 1_1 (demo): ", total_calibration_value);
+        assertEq(total_calibration_value, 142);
+    }
+
     function test_day01_01() public {
         uint256 total_calibration_value = 0;
 

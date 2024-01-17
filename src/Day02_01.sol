@@ -10,7 +10,7 @@ contract Day02_01 {
     uint8 constant MAXIMUM_ALLOWED_BLUE = 14;
 
     function parseLine(string calldata line) public view virtual returns (uint256) {
-        uint256 indexOfColon = LibString.indexOf(line, ":", 0);
+        uint256 indexOfColon = LibString.indexOf(line, ":", 6);
         string[] memory gameDataSplit = LibString.split(string(bytes(line[indexOfColon:])), ";");
 
         uint256 maxRed;
