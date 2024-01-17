@@ -14,7 +14,7 @@ library LibBytesUint {
     }
 
     function isDigit(bytes1 singleByte) public pure returns (bool) {
-        for (uint256 i = 48; i < 58; i++) {            
+        for (uint256 i = 48; i < 58; i++) {
             if (uint256(uint8(singleByte)) == i) {
                 return true;
             }
