@@ -4,10 +4,6 @@ pragma solidity ^0.8.13;
 import {LibString} from "solady/src/utils/LibString.sol";
 
 contract Day04_01 {
-    uint8 constant MAXIMUM_ALLOWED_RED = 12;
-    uint8 constant MAXIMUM_ALLOWED_GREEN = 13;
-    uint8 constant MAXIMUM_ALLOWED_BLUE = 14;
-
     function parseLine(string calldata line) public view virtual returns (uint256) {
         uint256 indexOfColon = LibString.indexOf(line, ":", 6);
         uint256 indexOfVerticalBar = LibString.indexOf(line, "|", 6);
