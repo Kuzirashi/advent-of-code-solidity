@@ -4,14 +4,11 @@ pragma solidity ^0.8.13;
 import {LibString} from "solady/src/utils/LibString.sol";
 import {LibBytesUint} from "./LibBytesUint.sol";
 
-struct Race {
-    uint256 time;
-    uint256 distance;
-}
-
-contract Day06_01 {
-    Race[] public races;
+contract Day06_02 {
     uint256 lineIndex;
+
+    uint256 distance;
+    uint256 time;
 
     function splitWhitespace(string calldata subject) internal pure returns (string[] memory result) {
         uint256[] memory indices = LibString.indicesOf(subject, " ");
@@ -41,40 +38,33 @@ contract Day06_01 {
         }
     }
 
+    function collectSeparatedEntries(string[] memory splitByWhitespace) internal pure returns (uint256) {
+        string memory collectedString = splitByWhitespace[1];
+        for (uint256 i = 2; i < splitByWhitespace.length; i++) {
+            collectedString = string.concat(collectedString, splitByWhitespace[i]);
+        }
+
+        return LibBytesUint.bytesToUint(bytes(collectedString));
+    }
+
     function parseLine(string calldata line) public virtual returns (uint256 result) {
         string[] memory splitByWhitespace = splitWhitespace(line);
 
-        for (uint256 i = 1; i < splitByWhitespace.length; i++) {
-            if (bytes(splitByWhitespace[i]).length == 0) {
-                break;
-            }
-
-            if (lineIndex == 0) {
-                // time
-                races.push(Race(LibBytesUint.bytesToUint(bytes(splitByWhitespace[i])), 0));
-            } else {
-                // distance
-                races[i - 1].distance = LibBytesUint.bytesToUint(bytes(splitByWhitespace[i]));
-            }
+        if (lineIndex == 0) {
+            time = collectSeparatedEntries(splitByWhitespace);
+        } else {
+            distance = collectSeparatedEntries(splitByWhitespace);
         }
 
         lineIndex++;
 
         if (lineIndex == 2) {
-            result = 1;
+            for (uint256 i = 0; i < time; i++) {
+                uint256 distanceCurrent = (time - i) * i;
 
-            for (uint256 i = 0; i < races.length; i++) {
-                uint256 waysToWin = 0;
-
-                for (uint256 j = 0; j < races[i].time; j++) {
-                    uint256 distanceCurrent = (races[i].time - j) * j;
-
-                    if (distanceCurrent > races[i].distance) {
-                        waysToWin++;
-                    }
+                if (distanceCurrent > distance) {
+                    result++;
                 }
-
-                result *= waysToWin;
             }
         } else {
             return 0;
